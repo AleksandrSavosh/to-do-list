@@ -1,0 +1,34 @@
+@mixin style-button($color) {
+  border-color: lighten($color, 20%);
+  background-color: lighten($color, 30%);
+
+  &:hover:not(:disabled) {
+    background-color: lighten($color, 35%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: lighten($color, 25%);
+  }
+}
+
+@mixin style-link($color) {
+  &:link,
+  &:visited {
+    color: lighten($color, 0%);
+  }
+
+  &:hover {
+    color: lighten($color, 20%);
+  }
+  &:active {
+    color: lighten($color-main, 10%);
+  }
+}
+
+@mixin respond($breakpoint-px) {
+  @media (max-width: math.div($breakpoint-px, 16px) * 1em) {
+    @content;
+  }
+}
+
+

@@ -1,0 +1,43 @@
+<div class="app-card" *ngIf="task">
+  <div class="app-task">
+    <p class="app-task__description">{{task.description}}</p>
+    <p class="app-task__performer">{{task.performer.name}}</p>
+    <div class="app-task__priority app-priority {{'app-priority--' + task.priority}}">
+      {{task.priority}}
+    </div>
+  </div>
+  <!--    <p>{{task.created}}</p>-->
+  <div class="app-card__actions">
+    <button class="app-button"
+            *ngIf="!task.isCompleted"
+            [disabled]="disabled"
+            (click)="editTask(task)"
+            data-change>Изменить</button>
+    <button class="app-button app-button--danger"
+            *ngIf="task.isCompleted"
+            [disabled]="disabled"
+            (click)="removeTask(task)"
+            data-remove>Удалить</button>
+    <button class="app-button"
+            *ngIf="!task.isCompleted"
+            [disabled]="disabled"
+            (click)="completeTask(task)"
+            data-complete>
+      Завершить
+    </button>
+    <button class="app-button"
+            *ngIf="task.priority < 9 && !task.isCompleted"
+            [disabled]="disabled"
+            (click)="changePriority(task, 1)"
+            data-increase-priority>
+      Повысить приоритет
+    </button>
+    <button class="app-button"
+            *ngIf="task.priority > 0 && !task.isCompleted"
+            [disabled]="disabled"
+            (click)="changePriority(task, -1)"
+            data-decrease-priority>
+      Понизить приоритет
+    </button>
+  </div>
+</div>

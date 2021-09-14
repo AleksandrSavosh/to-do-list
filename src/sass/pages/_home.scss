@@ -1,0 +1,25 @@
+.app-home {
+  padding: $indent-large $indent-small;
+
+  .app-home__add-task {
+    margin-bottom: $indent-large;
+  }
+
+  .app-home__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-home__list-sorting {
+    width: 100%;
+    text-align: right;
+
+    select {
+      margin-left: $indent-small;
+    }
+  }
+
+  .app-home__task-card {
+    margin-top: $indent;
+  }
+}

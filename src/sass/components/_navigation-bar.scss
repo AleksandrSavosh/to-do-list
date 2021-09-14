@@ -1,0 +1,16 @@
+.app-navigation-bar {
+  padding: $indent;
+
+  .app-navigation-bar__link + .app-navigation-bar__link {
+    margin-left: $indent;
+  }
+
+  .app-navigation-bar__link {
+    @include style-link($color-main);
+  }
+
+  .app-navigation-bar__link--active {
+    @include style-link($color-accent);
+
+  }
+}

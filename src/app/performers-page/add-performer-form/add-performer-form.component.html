@@ -1,0 +1,45 @@
+<form class="app-form" [formGroup]="form" (ngSubmit)="submit()">
+  <fieldset>
+    <legend>Добавить исполнителя</legend>
+    <div class="app-form__group">
+      <label for="firstname">Имя</label>
+      <input id="firstname"
+             class="app-input"
+             type="text"
+             placeholder="Имя исполнителя"
+             [formControl]="firstname"/>
+    </div>
+    <ng-container *ngIf="firstname.dirty && firstname.touched">
+      <p class="app-form__message app-form__message--error"
+         *ngIf="firstname.errors?.required"
+         data-error-firstname>
+        Задайте имя
+      </p>
+    </ng-container>
+    <div class="app-form__group">
+      <label for="lastname">Фамилия</label>
+      <input id="lastname"
+             class="app-input"
+             type="text"
+             placeholder="Фамилия исполнителя"
+             [formControl]="lastname"/>
+    </div>
+    <ng-container *ngIf="lastname.dirty && lastname.touched">
+      <p class="app-form__message app-form__message--error"
+         *ngIf="lastname.errors?.required"
+         data-error-lastname>
+        Задайте фамилию
+      </p>
+    </ng-container>
+
+    <p class="app-form__message app-form__message--success"
+       *ngIf="success"
+       data-success>
+      Добавлен
+    </p>
+
+    <div class="app-form__actions">
+      <button class="app-button app-button--primary" type="submit" data-submit>Добавить</button>
+    </div>
+  </fieldset>
+</form>

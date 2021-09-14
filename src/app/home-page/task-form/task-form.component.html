@@ -1,0 +1,65 @@
+<form class="app-form" [formGroup]="form" (ngSubmit)="submit()">
+  <fieldset>
+    <legend>
+      {{ mode === 'create' ? 'Новая задача' : 'Изменить задачу' }}
+    </legend>
+    <div class="app-form__group">
+      <label for="description">Описание</label>
+      <textarea id="description" class="app-textarea" placeholder="Описание" [formControl]="description"></textarea>
+    </div>
+    <p class="app-form__message app-form__message--error"
+       *ngIf="description.dirty && description.touched && description.errors?.required"
+       data-error-description>
+      Дайте описание
+    </p>
+
+    <div class="app-form__group">
+      <label for="performer">Исполнитель</label>
+      <select id="performer"
+              class="app-select"
+              [formControl]="performer"
+              [compareWith]="compare">
+        <option [ngValue]="null" *ngIf="!performer.value && !task" selected>Выбрать исполнителя</option>
+        <option *ngFor="let performer of performers$ | async" [ngValue]="performer">{{performer.name}}</option>
+      </select>
+    </div>
+    <p class="app-form__message app-form__message--error"
+       *ngIf="performer.dirty && performer.touched && performer.errors?.required"
+       data-error-performer>
+      Выберите исполнителя
+    </p>
+
+    <div class="app-form__group">
+      <label for="priority">Приоритет</label>
+      <input id="priority"
+             class="app-input"
+             type="number"
+             placeholder="Приоритет"
+             [formControl]="priority"/>
+    </div>
+    <ng-container *ngIf="priority.dirty && priority.touched">
+      <p class="app-form__message app-form__message--error"
+         *ngIf="priority.errors?.required"
+         data-error-priority>
+        Дайте приоритет
+      </p>
+      <p class="app-form__message app-form__message--error"
+         *ngIf="priority.errors?.min || priority.errors?.max"
+         data-error-priority-not-in-range>
+        Значение должно быть в диапазоне от 0 до 9
+      </p>
+    </ng-container>
+
+    <p class="app-form__message app-form__message--success"
+       *ngIf="success"
+       data-success>
+      {{ mode === 'create' ? 'Задача создана' : 'Задача изменена' }}
+    </p>
+
+    <div class="app-form__actions">
+      <button class="app-button app-button--primary" type="submit" data-submit>
+        {{ mode === 'create' ? 'Добавить' : 'Изменить' }}
+      </button>
+    </div>
+  </fieldset>
+</form>

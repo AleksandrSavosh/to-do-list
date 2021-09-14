@@ -1,0 +1,17 @@
+
+.app-priority {
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  border-radius: 100%;
+  color: white;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.2rem;
+
+  @for $i from 0 through 9 {
+    &.app-priority--#{$i} {
+      background-color: mix($color-danger, $color-safe, percentage(($i + 1) * .1));
+    }
+  }
+}

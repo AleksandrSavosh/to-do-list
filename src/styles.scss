@@ -1,0 +1,37 @@
+@use 'sass:color';
+@use 'sass:math';
+
+@import 'sass/abstracts/variables';
+@import 'sass/abstracts/mixins';
+@import 'sass/base/reset';
+@import 'sass/components/button';
+@import 'sass/components/input';
+@import 'sass/components/select';
+@import 'sass/components/textarea';
+@import 'sass/components/form';
+@import 'sass/components/card';
+@import 'sass/components/priority';
+@import 'sass/components/task';
+@import 'sass/components/modal';
+@import 'sass/components/close';
+@import 'sass/components/list';
+@import 'sass/components/performer';
+@import 'sass/components/navigation-bar';
+@import 'sass/pages/home';
+@import 'sass/pages/performers';
+
+html {
+  height: 100%;
+  font-size: $root-font-size;
+}
+
+body {
+  max-width: $body-max-width;
+  height: 100%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}

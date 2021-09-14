@@ -1,0 +1,36 @@
+.app-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color-main, .5);
+
+  .app-modal__modal {
+    width: 50vw;
+    max-width: 35rem;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding: $indent;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    background: white;
+
+    @include respond(740px) {
+      width: 75vw;
+    }
+
+    @include respond(450px) {
+      width: 100vw;
+      height: 101vh;
+    }
+  }
+
+  .app-modal__close {
+    position: absolute;
+    top: $indent;
+    right: $indent;
+  }
+}

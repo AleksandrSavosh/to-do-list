@@ -1,0 +1,61 @@
+.app-form {
+  fieldset {
+    display: inline-block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  legend {
+    font-weight: 900;
+    margin-bottom: $indent;
+  }
+
+  .app-form__group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      flex-basis: 25%;
+      text-align: right;
+    }
+
+    input, select, textarea {
+      flex-basis: 70%;
+    }
+
+    @include respond(360px) {
+      flex-direction: column;
+
+      label, input, select, textarea {
+        flex-basis: unset;
+        width: 100%;
+        text-align: left;
+      }
+    }
+  }
+
+  .app-form__group + .app-form__group,
+  .app-form__group + .app-form__actions {
+    margin-top: $indent;
+  }
+
+  .app-form__message {
+    text-align: right;
+
+    &.app-form__message--success {
+      color: $color-safe;
+    }
+
+    &.app-form__message--error {
+      color: $color-danger;
+    }
+  }
+
+  .app-form__actions {
+    text-align: right;
+  }
+}

@@ -1,0 +1,27 @@
+.app-card {
+  display: inline-block;
+  width: 100%;
+  padding: $indent;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: white;
+
+  .app-card__actions {
+    margin-top: $indent-large;
+    text-align: right;
+
+    button + button {
+      margin-left: $indent-small;
+    }
+
+    @include respond(530px) {
+      display: flex;
+      flex-direction: column;
+
+      button + button {
+        margin-left: 0;
+        margin-top: $indent-small;
+      }
+    }
+  }
+}

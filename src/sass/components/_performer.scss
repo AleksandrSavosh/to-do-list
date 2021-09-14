@@ -1,0 +1,18 @@
+.app-performer {
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
+  padding: $indent;
+
+  .app-performer__name {
+    flex-basis: 50%;
+  }
+
+  .app-performer__task {
+    flex-basis: calc(50% - 1.5rem);
+  }
+
+  .app-performer__remove {
+    flex-basis: 1.5rem;
+  }
+}

@@ -1,0 +1,19 @@
+.app-task {
+  position: relative;
+
+  .app-task__description {
+    margin-top: 0;
+    color: $color-secondary;
+  }
+
+  .app-task__performer {
+    margin-bottom: 0;
+    font-weight: 900;
+  }
+
+  .app-task__priority {
+    position: absolute;
+    bottom: 0;
+    right: $indent;
+  }
+}

@@ -1,0 +1,19 @@
+<section class="app-home__list">
+  <div class="app-home__list-sorting">
+    <label for="sort-options">Сортировать</label>
+    <select id="sort-options"
+            class="app-select"
+            [(ngModel)]="sortOptions"
+            [compareWith]="compare">
+      <option [ngValue]="{ direction: 'desc', fields: ['priority'] }">Сначала приоритетные</option>
+      <option [ngValue]="{ direction: 'asc', fields: ['priority'] }">Сначала не приоритетные</option>
+      <option [ngValue]="{ direction: 'asc', fields: ['performer', 'name'] }">По исполнителю от А до Я</option>
+      <option [ngValue]="{ direction: 'desc', fields: ['performer', 'name'] }">По исполнителю от Я до А</option>
+      <option [ngValue]="{ direction: 'desc', fields: ['created'] }">Сначала новые</option>
+      <option [ngValue]="{ direction: 'asc', fields: ['created'] }">Сначала старые</option>
+    </select>
+  </div>
+  <app-task-card class="app-home__task-card"
+                 *ngFor="let taskView of tasksViews$ | async | sort:sortOptions"
+                 [task]="taskView"></app-task-card>
+</section>
