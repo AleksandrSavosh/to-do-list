@@ -5,6 +5,9 @@ import { map, takeUntil } from 'rxjs/operators';
 import { Task } from '../../models/task';
 import { BackendService } from '../../backend.service';
 import { PerformerListItemModel } from './performer-list-item.model';
+import { getLocalePluralCase, Plural, registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import localeRuExtra from '@angular/common/locales/extra/ru';
 
 @Component({
   selector: 'app-performers-list',
@@ -12,6 +15,10 @@ import { PerformerListItemModel } from './performer-list-item.model';
   styleUrls: ['./performers-list.component.scss']
 })
 export class PerformersListComponent implements OnInit {
+  Plural = Plural;
+
+  getLocalePluralCase = getLocalePluralCase;
+
   performers$: Observable<PerformerListItemModel[]> | undefined;
 
   private ngDestroy = new Subject();
@@ -20,6 +27,8 @@ export class PerformersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    registerLocaleData(localeRu, 'ru-RU', localeRuExtra);
+
     this.backend.loadPerformers();
     this.backend.loadTasks();
 

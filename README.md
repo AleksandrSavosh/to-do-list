@@ -25,7 +25,7 @@ $ npm install
 
 - Execute commands in separated terminals. 
 ```shell 
-$ json-server .\backend-mock.js
+$ json-server backend-mock.js
 ```
 ```shell
 $ npm run start

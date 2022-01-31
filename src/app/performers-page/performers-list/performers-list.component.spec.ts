@@ -43,7 +43,7 @@ describe('PerformersListComponent', () => {
 
   it('should show number of tasks', () => {
     expect(getText(fixture, '.app-list__item:nth-child(1) .app-performer__task')).toBe('1 задача');
-    expect(getText(fixture, '.app-list__item:nth-child(2) .app-performer__task')).toBe('3 задач(и)');
+    expect(getText(fixture, '.app-list__item:nth-child(2) .app-performer__task')).toBe('3 задачи');
     expect(getText(fixture, '.app-list__item:nth-child(3) .app-performer__task')).toBe('Нет задач');
   });
 

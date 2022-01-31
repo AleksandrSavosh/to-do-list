@@ -1,14 +1,19 @@
 <section class="app-performers__list app-list">
   <div class="app-list__item app-performer" *ngFor="let performer of performers$ | async">
     <div class="app-performer__name">{{performer.name}}</div>
-    <div class="app-performer__task">
-      <ng-container *ngIf="performer.numberOfTasks === 0; else elseBlock1">Нет задач</ng-container>
-      <ng-template #elseBlock1>
-        <ng-container *ngIf="performer.numberOfTasks !== 11 && performer.numberOfTasks.toString().endsWith('1'); else elseBlock2">
-          {{performer.numberOfTasks}} задача
-        </ng-container>
-      </ng-template>
-      <ng-template #elseBlock2>{{performer.numberOfTasks}} задач(и)</ng-template>
+    <!--    https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/language_plural_rules.html-->
+    <div
+      class="app-performer__task"
+      *ngIf="!performer.numberOfTasks"
+    >Нет задач</div>
+    <div
+      class="app-performer__task"
+      *ngIf="performer.numberOfTasks"
+      [ngSwitch]="getLocalePluralCase('ru-RU')(performer.numberOfTasks)"
+    >
+      <ng-container *ngSwitchCase="Plural.One">{{performer.numberOfTasks}} задача</ng-container>
+      <ng-container *ngSwitchCase="Plural.Few">{{performer.numberOfTasks}} задачи</ng-container>
+      <ng-container *ngSwitchCase="Plural.Many">{{performer.numberOfTasks}} задач</ng-container>
     </div>
     <button class="app-performer__remove app-close"
             *ngIf="!performer.numberOfTasks"
